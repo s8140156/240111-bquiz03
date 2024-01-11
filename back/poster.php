@@ -33,8 +33,8 @@
 					<div><img src="./img/<?=$po['img'];?>" style="width:60px;height:80px" alt=""></div>
 					<div><input type="text" name="name[]" value="<?=$po['name'];?>" id=""></div>
 					<div>
-						<input type="button" data-id="<?=$po['id'];?>" data-sw="<?=($idx!==0)?$pos[$idx-1]['id']:$po['id'];?>" value="往上">
-						<input type="button" data-id="<?=$po['id'];?>" data-sw="<?=(count($pos)-1!=$idx)?$pos[$idx+1]['id']:$po['id'];?>" value="往下"></div>
+						<input class="btn" type="button" data-id="<?=$po['id'];?>" data-sw="<?=($idx!==0)?$pos[$idx-1]['id']:$po['id'];?>" value="往上">
+						<input class="btn" type="button" data-id="<?=$po['id'];?>" data-sw="<?=(count($pos)-1!=$idx)?$pos[$idx+1]['id']:$po['id'];?>" value="往下"></div>
 					<div>
 						<input type="hidden" name="id[]" value="<?=$po['id'];?>">
 						<!-- input:checkbox*2+select>option*3 -->
@@ -71,3 +71,15 @@
 	</form>
 
 </div>
+<script>
+	$(".btn").on("click",function(){
+		let id=$(this).data('id');
+		let sw=$(this).data('sw');
+		let table='poster';
+		$.post("./api/sw.php",{id,sw,table},()=>{
+			location.reload()
+			//  使用reload 畫面會重新載入 結果不會看到你換上換下的位置 會是從新來過喔
+		})
+	})
+
+</script>
