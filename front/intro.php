@@ -1,4 +1,4 @@
-﻿
+﻿<!-- 從03p02.htm 但是以切版方式 id=mm以上及div以下刪除留下以下, include在index id="mm"-->
     <div class="tab rb" style="width:87%;">
       <div style="background:#FFF; width:100%; color:#333; text-align:left">
         <video src="movie/03B20v.avi" width="300px" height="250px" controls="" style="float:right;"></video>

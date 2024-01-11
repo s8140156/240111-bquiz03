@@ -1,3 +1,4 @@
+<!-- 原先index拆出 id=mm裡的內容 -->
 <div class="half" style="vertical-align:top;">
       <h1>預告片介紹</h1>
       <div class="rb tab" style="width:95%;">
