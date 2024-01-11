@@ -39,7 +39,7 @@
 						<input type="hidden" name="id[]" value="<?=$po['id'];?>">
 						<!-- input:checkbox*2+select>option*3 -->
 						<input type="checkbox" name="sh[]" value="<?=$po['id'];?>" <?=($po['sh']==1)?'checked':'';?>>顯示<input type="checkbox" name="del[]" value="<?=$po['id'];?>" id="">刪除
-						<select name="ani" id="">
+						<select name="ani[]" id="">
 							<option value="1" <?=($po['ani']==1)?'selected':'';?>>淡入淡出</option>
 							<option value="2" <?=($po['ani']==2)?'selected':'';?>>縮放</option>
 							<option value="3" <?=($po['ani']==3)?'selected':'';?>>滑入滑出</option>
