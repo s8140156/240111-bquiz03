@@ -11,7 +11,7 @@ select,select option
 }
 input[type='text'],input[type='file'],input[type='password'],textarea,.button
 {
-	width:200px;
+	width:200px; 
 	font-size:16px;
 	padding:7px 5px 7px 5px;
 	background:#4C4C4C;
@@ -22,14 +22,17 @@ input[type='text'],input[type='file'],input[type='password'],textarea,.button
 }
 input[type='button'],input[type='submit'],input[type='reset'],button,.button
 {
-	min-width:70px;
-	min-height:40px;
+	/* min-width:70px; 
+	min-height:40px; */
 	background:#000;
 	color:#fff;
 	border:none;
 	cursor:pointer;
 	font-size:18px;
 	text-decoration:none;
+	padding: 5px 12px; /*新增 用padding調甚麼?*/
+	margin: 5px; /*新增 用padding調甚麼?*/
+	border-radius: 5px; /*新增 用padding調甚麼?*/
 }
 input[type='button']:hover,input[type='submit']:hover,input[type='reset']:hover,button:hover,.button:hover
 {

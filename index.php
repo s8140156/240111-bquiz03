@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>影城</title>
   <link rel="stylesheet" href="css/css.css">
-  <link href="css/s2.css" rel="stylesheet" type="text/css">
+  <!-- <link href="css/s2.css" rel="stylesheet" type="text/css"> -->
   <script src="js/jquery-1.9.1.min.js"></script>
 </head>
 
@@ -19,7 +19,7 @@
       <a href="index.php">首頁</a>
       <a href="index.php?do=order">線上訂票</a>
       <a href="#">會員系統</a>
-      <a href="03P03.htm">管理系統</a>
+      <a href="back.php">管理系統</a>
     </div>
     <div id="text"> <span class="ct">最新活動</span>
       <marquee direction="right">
