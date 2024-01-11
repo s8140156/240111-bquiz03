@@ -5,6 +5,8 @@
 		margin: 3px;
 		justify-content: space-between;
 		align-items: center;
+        background-color: white;
+
 	}
 
 	.item div {
@@ -21,34 +23,37 @@
 		<div class="ct" style="width:24.5%;margin:0 0.25%; background-color:#ccc">預告片排序</div>
 		<div class="ct" style="width:24.5%;margin:0 0.25%; background-color:#ccc">操作</div>
 	</div>
-	<div style="width:100%; height:190px;overflow:auto">
-		<?php
-		$pos = $Poster->all(" order by rank");
-		foreach ($pos as $idx => $po) {
-
-
-		?>
-			<div class="item">
-				<div><img src="./img/<?= $po['img']; ?>" style="width:60px;height:80px" alt=""></div>
-				<div><input type="text" name="name[]" value="<?= $po['name']; ?>" id=""></div>
-				<div><input type="button" value="往上"><input type="button" value="往下"></div>
-				<div>
-					<!-- input:checkbox*2+select>option*3 -->
-					<input type="checkbox" name="sh[]" value="<?= $po['id']; ?>" <?=($po['sh']==1)?'checked':'';?>>顯示<input type="checkbox" name="del[]" value="<?= $po['id']; ?>" id="">刪除
-					<select name="ani" id="">
-						<option value="1">淡入淡出</option>
-						<option value="2">縮放</option>
-						<option value="3">滑入滑出</option>
-					</select>
+	<form action="./api/edit_poster.php" method="post">
+		<div style="width:100%; height:190px;overflow:auto">
+			<?php
+			$pos = $Poster->all(" order by rank");
+			foreach ($pos as $idx => $po) {
+			?>
+				<div class="item">
+					<div><img src="./img/<?=$po['img'];?>" style="width:60px;height:80px" alt=""></div>
+					<div><input type="text" name="name[]" value="<?=$po['name'];?>" id=""></div>
+					<div>
+						<input type="button" data-id="<?=$po['id'];?>" data-sw="<?=($idx!==0)?$pos[$idx-1]['id']:$po['id'];?>" value="往上">
+						<input type="button" data-id="<?=$po['id'];?>" data-sw="<?=(count($pos)-1!=$idx)?$pos[$idx+1]['id']:$po['id'];?>" value="往下"></div>
+					<div>
+						<input type="hidden" name="id[]" value="<?=$po['id'];?>">
+						<!-- input:checkbox*2+select>option*3 -->
+						<input type="checkbox" name="sh[]" value="<?=$po['id'];?>" <?=($po['sh']==1)?'checked':'';?>>顯示<input type="checkbox" name="del[]" value="<?=$po['id'];?>" id="">刪除
+						<select name="ani" id="">
+							<option value="1" <?=($po['ani']==1)?'selected':'';?>>淡入淡出</option>
+							<option value="2" <?=($po['ani']==2)?'selected':'';?>>縮放</option>
+							<option value="3" <?=($po['ani']==3)?'selected':'';?>>滑入滑出</option>
+						</select>
+					</div>
 				</div>
-			</div>
-		<?php
-		}
-
-		?>
-	</div>
-	<!-- 這邊可以在畫面上用F12實測 只要高度不要超過畫面即可 -->
-	<div class="ct"><input type="submit" value="編輯確定"><input type="reset" value="重置"></div>
+			<?php
+			}
+	
+			?>
+		</div>
+		<!-- 這邊可以在畫面上用F12實測 只要高度不要超過畫面即可 -->
+		<div class="ct"><input type="submit" value="編輯確定"><input type="reset" value="重置"></div>
+	</form>
 </div>
 <hr>
 <div>
