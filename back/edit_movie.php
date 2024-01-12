@@ -89,6 +89,7 @@
 		</div>
 	</div>
 	<div class="ct">
+		<input type="hidden" name="id" value="<?=$movie['id'];?>">
 		<input type="submit" value="編輯">
 		<input type="reset" value="重置"></div>
 </form>
