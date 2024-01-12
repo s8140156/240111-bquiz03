@@ -28,7 +28,7 @@ input[type='button'],input[type='submit'],input[type='reset'],button,.button
 	color:#fff;
 	border:none;
 	cursor:pointer;
-	font-size:18px;
+	font-size:14px; /*老師有改size 18->14px*/
 	text-decoration:none;
 	padding: 5px 12px; /*新增*/
 	margin: 5px; /*新增*/

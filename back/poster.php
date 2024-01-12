@@ -16,7 +16,7 @@
 	}
 </style>
 <div>
-	<div class="ct" style="padding-bottom:10px">預告片清單</div>
+	<h3 class="ct">預告片清單</h3>
 	<div style="display:flex;justify-content:space-between">
 		<div class="ct" style="width:24.5%;margin:0 0.25%; background-color:#ccc">預告片海報</div>
 		<div class="ct" style="width:24.5%;margin:0 0.25%; background-color:#ccc">預告片片名</div>
@@ -24,7 +24,7 @@
 		<div class="ct" style="width:24.5%;margin:0 0.25%; background-color:#ccc">操作</div>
 	</div>
 	<form action="./api/edit_poster.php" method="post">
-		<div style="width:100%; height:215px;overflow:auto">
+		<div style="width:100%; height:190px;overflow:auto">
 			<?php
 			$pos = $Poster->all(" order by rank");
 			foreach ($pos as $idx => $po) {
