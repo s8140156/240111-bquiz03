@@ -16,6 +16,20 @@
 		<button>重置</button>
 	</div>
 </div>
+<style>
+	#room{
+		background-image: url('./icon/03D04.png');
+		background-position: center;
+		background-repeat: none;
+		width:540px;
+		height:370px; /*看03D04的尺寸*/
+		margin: auto;
+		}
+</style>
+<div id="booking">
+	<div id="room"></div>
+</div>
+
 <script>
 	let url=new URL()
 	getMovies();
