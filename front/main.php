@@ -233,7 +233,7 @@
                     </div>
                     <div style="width:65%">
                         <div><?= $movie['name']; ?></div>
-                        <div style="font-size:13px;">分級: <img src="./icon/03C0<?= $movie['level']; ?>.png" style="width:20px"></div>
+                        <div style="font-size:13px;">分級: <img src="./icon/03C0<?=$movie['level'];?>.png" style="width:20px"></div>
                         <div style="font-size:13px;">上映日期:<?= $movie['ondate']; ?></div>
                     </div>
                     <div style="width:100%">
