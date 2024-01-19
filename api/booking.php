@@ -21,7 +21,7 @@ $session=$_GET['session'];
 
 	}
 	.seat {
-    width: 63px;
+    width: 63px; /*這邊是在ps確認圖面寬高 並在畫面上測試調整*/
     height: 85px;
 	position:relative;
 }
@@ -47,15 +47,11 @@ $session=$_GET['session'];
 			echo (floor($i/5)+1) . "排";
 			echo (($i%5)+1) . "號";
 			echo "</div>";
-			echo "<div clss='ct'>";
+			echo "<div class='ct'>";
 			echo "<img src='./icon/03D02.png'>";
 			echo "</div>";
 			echo "<input type='checkbox' name='chk' value='$i' class='chk'>";
 			echo "</div>";
-
-
-
-
 		}
 		?>
 
@@ -68,5 +64,38 @@ $session=$_GET['session'];
 
 
 		<button onclick="$('#select').show();$('#booking').hide()">上一步</button>
-		<button>訂購</button>
+		<button onclick="checkout()">訂購</button>
 	</div>
+
+	<script>
+		let seats=new Array(); //在外宣告全域陣列
+
+		$('.chk').on('change',function(){ //這邊使用change instead of click 因為是要看"勾選了"這個變化(change)
+			if($(this).prop('checked')){
+				if(seats.length+1<=4){
+					seats.push($(this).val())
+				}else{
+					$(this).prop('checked',false)
+					alert('每個人只能勾選四張票')
+				}
+
+			}else{
+				seats.splice(seats.indexOf($(this).val()),1) //從seats 用indexOf找被勾選的"位置" 然後取那筆刪除
+			}
+			$('#tickets').text(seats.length)
+			// console.log($(this).prop('checked'),seats)
+
+		})
+		function checkout(){
+			$.post("./api/checkout.php",{movie:'<?=$movie['name'];?>',
+				                         date:'<?=$date;?>',
+										 session:'<?=$session;?>',
+										 qt:seats.length //先把點選的座位數量傳送
+										 ,seats},(no)=>{
+				location.href=`?do=result&no=${no}`; //注意取得的值要改成字串(加' ') 不然輸入資料庫會有問題(變變數)
+
+			})
+
+			
+		}
+	</script>
