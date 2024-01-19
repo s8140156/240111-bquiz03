@@ -7,6 +7,16 @@ $movie=$Movie->find($_GET['movie_id']); //不是只有拿movie_id 是取得資�
 $date=$_GET['date'];
 $session=$_GET['session'];
 
+$ords=$Order->all(['movie'=>$movie['name'],
+                   'date'=>$date,
+				   'session'=>$session]);
+$seats=[]; //宣告一個空陣列
+foreach($ords as $ord){
+	$tmp=unserialize($ord['seats']);
+	$seats=array_merge($seats,$tmp); //多個陣列合併為單一陣列 檢查一遍就好
+}
+
+
 ?>
 <style>
 	#room {
@@ -48,9 +58,15 @@ $session=$_GET['session'];
 			echo (($i%5)+1) . "號";
 			echo "</div>";
 			echo "<div class='ct'>";
+			if(in_array($i,$seats)){
+			echo "<img src='./icon/03D03.png'>";
+		}else{
 			echo "<img src='./icon/03D02.png'>";
-			echo "</div>";
-			echo "<input type='checkbox' name='chk' value='$i' class='chk'>";
+		}
+		echo "</div>";
+		if(!in_array($i,$seats)){
+			echo "<input type='checkbox' name='chk' value='$i' class='chk'>"; //使用!not去判斷 有座位的就不需再寫else的做法
+		}
 			echo "</div>";
 		}
 		?>
